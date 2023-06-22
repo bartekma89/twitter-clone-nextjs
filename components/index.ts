@@ -1,7 +1,10 @@
 export { default as Layout } from './Layout';
-export { default as Sidebar } from './Sidebar';
-export { default as SidebarLogo } from './SidebarLogo';
-export { default as SidebarItem } from './SidebarItem';
-export { default as SidebarTweetButton } from './SidebarTweetButton';
-export { default as FollowBar } from './FollowBar';
+export { default as Sidebar } from './layout/Sidebar';
+export { default as SidebarLogo } from './layout/SidebarLogo';
+export { default as SidebarItem } from './layout/SidebarItem';
+export { default as SidebarTweetButton } from './layout/SidebarTweetButton';
+export { default as FollowBar } from './layout/FollowBar';
 export { default as Header } from './Header';
+export { default as Button } from './Button';
+export { default as Modal } from './Modal';
+export { default as Input } from './Input';
