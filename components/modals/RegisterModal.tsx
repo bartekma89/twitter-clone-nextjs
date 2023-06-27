@@ -1,11 +1,12 @@
 import { useCallback, useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+import { signIn } from 'next-auth/react';
 
 import useLoginModal from '@/hooks/useLoginModal';
 import useRegisterModal from '@/hooks/useRegisterModal';
 import Modal from '../Modal';
 import Input from '../Input';
-
-// @todo: add react hook form
 
 const RegisterModal = () => {
   const loginModal = useLoginModal();
@@ -30,15 +31,31 @@ const RegisterModal = () => {
     try {
       setIsLoading(true);
 
-      // @todo: add register and login
+      await axios.post('/api/register', {
+        email,
+        name,
+        username,
+        password,
+      });
+
+      toast.success('Account created!');
+
+      signIn('credentials', {
+        email,
+        password,
+      });
 
       registerModal.onClose();
     } catch (error) {
       console.error(error);
     } finally {
+      setEmail('');
+      setPassword('');
+      setName('');
+      setUsername('');
       setIsLoading(false);
     }
-  }, [registerModal]);
+  }, [email, name, password, registerModal, username]);
 
   const bodyContent = (
     <div className='flex flex-col gap-4'>

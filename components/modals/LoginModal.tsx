@@ -4,6 +4,7 @@ import useLoginModal from '@/hooks/useLoginModal';
 import Modal from '../Modal';
 import Input from '../Input';
 import useRegisterModal from '@/hooks/useRegisterModal';
+import { signIn } from 'next-auth/react';
 
 // @todo: add react hook form
 
@@ -28,15 +29,17 @@ const LoginModal = () => {
     try {
       setIsLoading(true);
 
-      // TODO add login in
+      await signIn('credentials', { email, password });
 
       loginModal.onClose();
     } catch (error) {
       console.error(error);
     } finally {
+      setEmail('');
+      setPassword('');
       setIsLoading(false);
     }
-  }, [loginModal]);
+  }, [email, loginModal, password]);
 
   const bodyContent = (
     <div className='flex flex-col gap-4'>
