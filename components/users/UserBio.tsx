@@ -3,23 +3,22 @@ import format from 'date-fns/format';
 import { BiCalendar } from 'react-icons/bi';
 
 import useCurrentUser from '@/hooks/useCurrentUser';
-import useUser from '@/hooks/useUser';
 import { Button } from '@/components';
+import { User } from '@/typings/general';
 
 interface ComponentProps {
-  userId: string;
+  user: User;
 }
 
-const UserBio = ({ userId }: ComponentProps) => {
+const UserBio = ({ user }: ComponentProps) => {
   const { data: currentUser } = useCurrentUser();
-  const { data: user } = useUser(userId);
 
   const createdAt = useMemo(() => {
     if (!user?.createdAt) {
       return null;
     }
 
-    return format(new Date(user.createdAt), 'MMMM yyyy');
+    return format(new Date(JSON.parse(user.createdAt as string)), 'MMMM yyyy');
   }, [user?.createdAt]);
 
   return (

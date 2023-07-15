@@ -1,14 +1,13 @@
-import useUser from '@/hooks/useUser';
 import Image from 'next/image';
+
 import Avatar from '../layout/Avatar';
+import { User } from '@/typings/general';
 
 interface ComponentProps {
-  userId: string;
+  user: User;
 }
 
-const UserHero = ({ userId }: ComponentProps) => {
-  const { data: user } = useUser(userId);
-
+const UserHero = ({ user }: ComponentProps) => {
   return (
     <div>
       <div className='bg-neutral-700 h-44 relative'>
@@ -22,7 +21,7 @@ const UserHero = ({ userId }: ComponentProps) => {
         )}
         <div className='absolute -bottom-16 left-4'>
           <Avatar
-            userId={userId}
+            user={user}
             isLarge
             hasBorder
           />

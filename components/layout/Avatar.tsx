@@ -3,25 +3,24 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import { Routes } from '@/typings/routes';
-import useUser from '@/hooks/useUser';
+import { User } from '@/typings/general';
 
 interface ComponentProps {
-  userId: string;
+  user: User;
   isLarge?: boolean;
   hasBorder?: boolean;
 }
 
-const Avatar = ({ userId, isLarge, hasBorder }: ComponentProps) => {
-  const { data: user } = useUser(userId);
+const Avatar = ({ user, isLarge, hasBorder }: ComponentProps) => {
   const router = useRouter();
 
   const onClick = useCallback(
     (event: MouseEvent<HTMLDivElement>) => {
       event.stopPropagation();
 
-      router.push(`${Routes.USERS}/${userId}`);
+      router.push(`${Routes.USERS}/${user?.id}`);
     },
-    [router, userId],
+    [router, user?.id],
   );
 
   return (
