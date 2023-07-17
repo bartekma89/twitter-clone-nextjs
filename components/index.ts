@@ -8,3 +8,6 @@ export { default as Header } from './Header';
 export { default as Button } from './Button';
 export { default as Modal } from './Modal';
 export { default as Input } from './Input';
+export { default as Avatar } from './layout/Avatar';
+export { default as UserHero } from './users/UserHero';
+export { default as UserBio } from './users/UserBio';

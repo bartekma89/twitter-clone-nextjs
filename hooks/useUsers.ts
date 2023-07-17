@@ -3,10 +3,10 @@ import useSWR from 'swr';
 import fetcher from '@/libs/fetcher';
 import { UserProps } from '@/typings/general';
 
-const useCurrentUser = () => {
-  const { data, error, isLoading, mutate } = useSWR<UserProps>('/api/current', fetcher);
+const useUsers = () => {
+  const { data, error, isLoading, mutate } = useSWR<UserProps[]>('/api/users', fetcher);
 
   return { data, error, isLoading, mutate };
 };
 
-export default useCurrentUser;
+export default useUsers;
