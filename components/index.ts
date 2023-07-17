@@ -11,3 +11,4 @@ export { default as Input } from './Input';
 export { default as Avatar } from './layout/Avatar';
 export { default as UserHero } from './users/UserHero';
 export { default as UserBio } from './users/UserBio';
+export { default as ImageUpload } from './ImageUpload';

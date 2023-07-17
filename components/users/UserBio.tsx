@@ -5,6 +5,7 @@ import { BiCalendar } from 'react-icons/bi';
 import useCurrentUser from '@/hooks/useCurrentUser';
 import { Button } from '@/components';
 import { User } from '@/typings/general';
+import useEditModal from '@/hooks/useEditModal';
 
 interface ComponentProps {
   user: User;
@@ -12,6 +13,8 @@ interface ComponentProps {
 
 const UserBio = ({ user }: ComponentProps) => {
   const { data: currentUser } = useCurrentUser();
+
+  const editModal = useEditModal();
 
   const createdAt = useMemo(() => {
     if (!user?.createdAt) {
@@ -28,7 +31,7 @@ const UserBio = ({ user }: ComponentProps) => {
           <Button
             secondary
             label='Edit'
-            onClick={() => {}}
+            onClick={editModal.onOpen}
           />
         ) : (
           <Button
