@@ -1,11 +1,11 @@
 import { BsHouseFill, BsBellFill } from 'react-icons/bs';
 import { FaUser } from 'react-icons/fa';
 import { BiLogOut } from 'react-icons/bi';
+import { signOut } from 'next-auth/react';
 
 import useCurrentUser from '@/hooks/useCurrentUser';
 import { SidebarLogo, SidebarItem, SidebarTweetButton } from '@/components';
 import { Routes } from '@/typings/routes';
-import { signOut } from 'next-auth/react';
 
 const Sidebar = () => {
   const { data: currentUser } = useCurrentUser();
